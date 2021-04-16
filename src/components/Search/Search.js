@@ -15,14 +15,11 @@ const Search = () => {
     const[amount,setAmount] = useState(10);
     const[search,setSearch]=useState();
 
-    const getData = () =>{
-        axios.get(`https://pixabay.com/api/?key=20557907-ac714dab22139b233a3ad2888&q=${query}&image_type=photo&per_page=${amount}`)
-        .then(data=> setImages(data.data.hits))
-        .catch(err=>console.log(err))
-    }
     
     useEffect(()=>{
-        getData();        
+        axios.get(`https://pixabay.com/api/?key=20557907-ac714dab22139b233a3ad2888&q=${query}&image_type=photo&per_page=${amount}`)
+        .then(data=> setImages(data.data.hits))
+        .catch(err=>console.log(err))     
     },[query, amount])
 
 
